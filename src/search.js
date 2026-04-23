@@ -7,10 +7,10 @@ function initSearch() {
     const searchBar = document.querySelector("#search-bar")
 
     searchForm.addEventListener("submit", searchValidation)
-    searchBar.addEventListener("input", suggestionHandler)
+    searchBar.addEventListener("input", searchSuggestionHandler)
 }
 
-function suggestionHandler(e) {
+function searchSuggestionHandler(e) {
     const query = e.target.value
     const inputEl = e.target
     clearTimeout(keyPressTimer)
@@ -30,9 +30,7 @@ async function fetchCitySuggestions(inputEl, query) {
     }
 }
 
-function searchValidation() {
-    //
-}
+
 
 
 export {
