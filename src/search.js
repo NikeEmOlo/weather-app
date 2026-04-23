@@ -20,8 +20,8 @@ function suggestionHandler(e) {
 async function fetchCitySuggestions(query) {
     try{
         const response = await fetch(`https://api.geoapify.com/v1/geocode/autocomplete?text=${query}&type=city&limit=5&lang=en&format=json&apiKey=${process.env.GEOAPIFY_API_KEY}`)
-        console.log(response)
         const data = await response.json()
+        return data
     } catch(e) {
         console.error(e)
     }
