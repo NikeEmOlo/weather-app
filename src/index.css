@@ -35,11 +35,36 @@ p, h1, h2, h3, h4, h5, h6 {
     min-height: 100vh;
 }
 
-.search-bar {
-    padding: 0.350rem 0.5rem;
-    line-height: 0.8;
-    border-radius: .25rem;
-    border: 1px solid grey;
+#search-form {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+
+    #search-bar-wrap {
+        display: flex;
+        gap: 0.5rem;
+    }
+
+    #search-bar {
+        padding: 0.35rem 0.5rem;
+        line-height: 0.8;
+        border-radius: .25rem;
+        border: 1px solid grey;
+    }
+
+    .suggestion-list {
+        display: flex;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        gap: 0.5rem;
+        padding: .5rem .25rem;
+    }
+
+    .suggestion {
+        list-style: none;
+        cursor: pointer;
+    }
 }
 
 
