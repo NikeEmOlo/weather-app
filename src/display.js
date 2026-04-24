@@ -79,7 +79,7 @@ function displaySuggestions(inputEl, cities) {
         }
     }, cities)
     
-    document.querySelector("#search-form").appendChild(suggestions.el)
+    document.querySelector("#search-submit").insertAdjacentElement("beforebegin", suggestions.el)
 }
 
 function fillInputBox(e, inputEl) {
