@@ -87,51 +87,49 @@ function displayCityWeather(weather) {
 
 //----------------------SEARCH BAR----------------------//
     const searchWrap = document.querySelector("#search-form")
-    page.classList.add("weather")
+    searchWrap.classList.add("weather")
 
-    applyStyleList(searchWrap, searchConfig.styles)
 
 //------------------WEATHER ICON WRAPPER----------------------------//
     const iconWrap = new Element("div", ["icon-wrap"], {}, {})
-    let iconWrapConfig = {
-        styles: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-        }
-    }
-    applyStyleList(iconWrap.el, iconWrapConfig.styles)
     page.appendChild(iconWrap.el)
 
 //----------------------ICON----------------------------//
-    const icon = new Element("img", [".weather-icon"], {
+    const icon = new Element("img", ["weather-icon"], {
         src: `https://cdn.meteocons.com/3.0.0-next.10/svg/fill/${weather.iconName}.svg`
     }, {})
-    let iconConfig = {
-        styles: {
-            height: "300px",
-            width: "auto",
-        }
-    }
-    applyStyleList(icon.el, iconConfig.styles)
     iconWrap.el.appendChild(icon.el)
 
 //--------------------INFO BAR-----------------------//
     const infoWrap = new Element("div", ["info-wrap"], {}, {},)
-    let infoWrapConfig = {
-        styles: {
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            // height: "clamp(150px, 30vh, 40%)",
-            minHeight: "50vh",
-            width: "100%",
-            backgroundColor: "red",
-        }
-    }
-    applyStyleList(infoWrap.el, infoWrapConfig.styles)
     page.appendChild(infoWrap.el)
+
+    const infoCond = new Text("h1", weather.conditions, ["conditions"], {}, {})
+    infoWrap.el.appendChild(infoCond.el)
+
+    const dataDesc = new Text("h2", weather.description, ["description"], {}, {})
+    infoWrap.el.appendChild(dataDesc.el)
+
+    const dataWrap = new Element("div", ["data-wrap"], {}, {})
+    infoWrap.el.appendChild(dataWrap.el)
+
+//--------------------TEMP STATS-----------------------//
+    const temps = {
+        Highs: weather.maxTemp,
+        "Current Temperature": weather.temperature,
+        Lows: weather.minTemp,
+    }
+
+    Object.entries(temps).forEach(([key, value]) => {
+        const statWrap = new Element("div", ["stat-wrap"], {}, {})
+        dataWrap.el.appendChild(statWrap.el)
+        const label = new Text("h4", key, ["temp-label"], {}, {})
+        statWrap.el.appendChild(label.el)
+        const num = new Text("h3", value, ["temp-value"], {}, {})
+        statWrap.el.appendChild(num.el)
+    })
 }
+
 
 
 export {

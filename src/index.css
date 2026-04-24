@@ -39,6 +39,47 @@ p, h1, h2, h3, h4, h5, h6 {
         justify-content: space-around;
         padding-top: 1rem;
     }
+
+    .icon-wrap {
+        display: flex;
+        justify-content: center;
+        align-items: center,
+    }
+
+    .weather-icon {
+        height: 300px;
+        width: auto;
+    }
+}
+
+.info-wrap {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    /* height: clamp(150px, 30vh, 40%); */
+    min-height: 50vh;
+    width: 100%;
+    
+
+    .conditions {
+        font-size: 2rem;
+    }
+
+    .data-wrap {
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .stat-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-width: 150px;
+    }
+
 }
 
 #search-form {
@@ -48,7 +89,8 @@ p, h1, h2, h3, h4, h5, h6 {
 
     &.weather {
         margin-left: auto;
-        flex-direction: row,
+        flex-direction: row;
+        padding-right: 1rem;
     }
 
     #search-bar-wrap {
