@@ -43,7 +43,7 @@ class SearchSuggestions extends Element {
             this.el.appendChild(listItem.el)
         } else {
             data.forEach((d) => {
-                const listItem = new Element("li", ["suggestion"], {}, eventListenerFns)
+                const listItem = new Element("li", ["suggestion"], {tabindex: "0"}, eventListenerFns)
                 listItem.el.textContent = `${d.name}, ${d.country}`
                 listItem.el.dataset.stateCode = d.stateCode
                 listItem.el.dataset.id = d.id
@@ -66,10 +66,18 @@ function initSearch() {
 
 function displaySuggestions(inputEl, cities) {
     removeSuggestions()
-    const suggestions = new SearchSuggestions({click: (e) => {
-        removeSuggestions()
-        fillInputBox(e, inputEl)
-    }}, cities)
+    const suggestions = new SearchSuggestions({
+        click: (e) => {
+            removeSuggestions()
+            fillInputBox(e, inputEl)
+        },
+        keydown: (e) => {
+            if (e.key === "Enter") {
+                removeSuggestions()
+                fillInputBox(e, inputEl)
+            }
+        }
+    }, cities)
     
     document.querySelector("#search-form").appendChild(suggestions.el)
 }
