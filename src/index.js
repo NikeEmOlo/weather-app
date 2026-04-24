@@ -1,6 +1,6 @@
 import "./index.css"
 
-import { initSearch } from "./search.js"
+import { initSearch } from "./display.js"
 
 
 initSearch()

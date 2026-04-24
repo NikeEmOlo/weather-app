@@ -28,17 +28,28 @@ p, h1, h2, h3, h4, h5, h6 {
     overflow-wrap: break-word;
 }
 /* ---------------------------------------Search Form------------------------------------------ */
-.main-page-wrap {
+#main-page-wrap {
     display: flex;
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+
+    &.weather {
+        flex-direction: column;
+        justify-content: space-around;
+        padding-top: 1rem;
+    }
 }
 
 #search-form {
     display: flex;
     flex-direction: column;
     position: relative;
+
+    &.weather {
+        margin-left: auto;
+        flex-direction: row,
+    }
 
     #search-bar-wrap {
         display: flex;
