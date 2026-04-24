@@ -22,6 +22,7 @@ function searchSuggestionHandler(e) {
 function searchValidation(e) {
     e.preventDefault(); // Block form submission
     const input = document.querySelector("#search-bar")
+    input.setCustomValidity("")
     if (!selectedCityData) {
         input.setCustomValidity("Select a valid city from the list")
         input.reportValidity();

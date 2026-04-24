@@ -65,11 +65,12 @@ function initSearch() {
 }
 
 function displaySuggestions(inputEl, cities) {
-    const existingList = document.querySelector(".suggestion-list")
-    if (existingList) {
-        existingList.remove()
-    } 
-    const suggestions = new SearchSuggestions({click: (e) => fillInputBox(e, inputEl)}, cities)
+    removeSuggestions()
+    const suggestions = new SearchSuggestions({click: (e) => {
+        removeSuggestions()
+        fillInputBox(e, inputEl)
+    }}, cities)
+    
     document.querySelector("#search-form").appendChild(suggestions.el)
 }
 
@@ -78,12 +79,21 @@ function fillInputBox(e, inputEl) {
     inputEl.setCustomValidity("")
     setselectedCityData(e.target.dataset, inputEl.value)
 }
-//-------------------------------------DISPLAY CITY WEATHER FORECAST-------------------------------------//
 
+function removeSuggestions() {
+    const existingList = document.querySelector(".suggestion-list")
+    if(existingList) {
+        existingList.remove()
+    } else return
+}
+//-------------------------------------DISPLAY CITY WEATHER FORECAST-------------------------------------//
 function displayCityWeather(weather) {
 //----------------------PAGE WRAPPER----------------------//
     const page = document.querySelector("#main-page-wrap")
-    page.classList.add("weather")
+    while (page.children.length > 1) { // Clear page before re-building
+        page.lastChild.remove();
+    }
+    page.classList.add("weather");
 
 //----------------------SEARCH BAR----------------------//
     const searchWrap = document.querySelector("#search-form")
