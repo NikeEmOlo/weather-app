@@ -52,6 +52,27 @@ p, h1, h2, h3, h4, h5, h6 {
         padding-top: 1rem;
     }
 
+    &.dark-bg {
+        #search-form.weather #search-bar {
+            color: white;
+        }
+
+        #search-form.weather #search-bar::placeholder {
+            color: rgba(255, 255, 255, 0.55);
+        }
+
+        #search-form.weather #search-submit {
+            color: white;
+        }
+
+        .conditions,
+        .temp-label,
+        .temp-value,
+        .suggestion {
+            color: white;
+        }
+    }
+
     .icon-wrap {
         display: flex;
         justify-content: center;
@@ -64,23 +85,53 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 }
 
+@keyframes refresh-in {
+    from {
+        opacity: 0;
+        transform: translateY(16px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
 .info-wrap {
+    animation: refresh-in 0.4s ease-out;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 2rem;
-    min-height: 50vh;
+    gap: 1.5rem;
     width: 100%;
-    
 
     .conditions {
-        font-size: 2rem;
+        font-size: clamp(3rem, 8vw, 6rem);
+        font-weight: 700;
+        color: #1a2744;
+        line-height: 1.1;
+    }
+
+    .description {
+        color: white;
+        font-size: clamp(0.9rem, 2vw, 1.2rem);
+        font-weight: 400;
+        text-align: center;
+        max-width: 60ch;
+        padding: 0 1rem;
     }
 
     .data-wrap {
         display: flex;
         justify-content: space-around;
         align-items: center;
+        gap: clamp(1rem, 4vw, 3rem);
+        width: clamp(300px, 55vw, 680px);
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 1.5rem;
+        padding: clamp(1rem, 3vw, 1.75rem) clamp(1.5rem, 5vw, 3rem);
     }
 
     .stat-wrap {
@@ -88,9 +139,22 @@ p, h1, h2, h3, h4, h5, h6 {
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        min-width: 150px;
+        gap: 0.25rem;
     }
 
+    .temp-label {
+        font-size: clamp(0.7rem, 1.5vw, 0.95rem);
+        font-weight: 500;
+        color: #1a2744;
+        white-space: nowrap;
+    }
+
+    .temp-value {
+        font-size: clamp(1.75rem, 4vw, 3rem);
+        font-weight: 700;
+        color: #1a2744;
+        line-height: 1;
+    }
 }
 
 #search-form {
@@ -106,11 +170,35 @@ p, h1, h2, h3, h4, h5, h6 {
     }
 
     &.weather #search-bar-wrap {
-        background-color: transparent;
+        background: transparent;
+        border: none;
+        gap: 0.5rem;
+        padding: 0;
     }
 
     &.weather #search-bar {
-        background-color: transparent;
+        background: rgba(255, 255, 255, 0.15);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid rgba(255, 255, 255, 0.35);
+        border-radius: 2rem;
+        padding: 0.5rem clamp(0.75rem, 4vw, 2rem);
+        color: #1a2744;
+        max-height: 32px;
+    }
+
+    &.weather #search-bar::placeholder {
+        color: rgba(26, 39, 68, 0.6);
+    }
+
+    &.weather #search-submit {
+        background: transparent;
+        border: 2px solid rgba(255, 255, 255, 0.808);
+        border-radius: 3rem;
+        padding: 0 1rem;
+        max-height: 32px;
+        color: #1a2744;
+        box-shadow: 0 0 8px rgba(255, 255, 255, 0.791), 0 0 20px rgb(255, 255, 255), inset 0 0 8px rgba(255, 255, 255, 0.25);
     }
 
     #search-bar-wrap {
@@ -141,7 +229,7 @@ p, h1, h2, h3, h4, h5, h6 {
         border: none;
         border-radius: 1rem;
         padding: 0.25rem 1rem;
-        font-size: clamp(0.875rem, 2vw, 1.125rem);
+        font-size: clamp(0.875rem, 1vw, 1.125rem);
         font-weight: 500;
         color: white;
     }

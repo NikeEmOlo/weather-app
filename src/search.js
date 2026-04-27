@@ -85,9 +85,15 @@ function setselectedCityData(data, city) {
     return selectedCityData
 }
 
+function searchBarKeydownHandler(e) {
+    if (e.key !== "Enter") return;
+    e.preventDefault();
+    if (selectedCityData) searchValidation(e);
+}
 
 export {
     searchSuggestionHandler,
     searchValidation,
+    searchBarKeydownHandler,
     setselectedCityData,
 }
