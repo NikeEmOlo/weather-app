@@ -1,3 +1,13 @@
+/* ---------------------------------------FONTS------------------------------------- */
+@font-face {
+    font-family: 'Open Sans';
+    src: url('./assets/fonts/OpenSans-Regular.woff2') format('woff2'),
+        url('./assets/fonts/OpenSans-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
 /* ------------------------------------------CSS Reset -----------------------------------------*/
 *, *::before, *::after {
     box-sizing: border-box;
@@ -13,6 +23,7 @@ body {
     min-height: 100vh;
     line-height: 1.5;
     -webkit-font-smoothing: antialiased;
+    font-family: 'Open Sans', 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
 img, picture, video, canvas, svg {
@@ -33,6 +44,7 @@ p, h1, h2, h3, h4, h5, h6 {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
+    background: linear-gradient(to bottom, #A0D5F4, #ffffff);
 
     &.weather {
         flex-direction: column;
@@ -93,17 +105,47 @@ p, h1, h2, h3, h4, h5, h6 {
         padding-right: 1rem;
     }
 
+    &.weather #search-bar-wrap {
+        background-color: transparent;
+    }
+
+    &.weather #search-bar {
+        background-color: transparent;
+    }
+
     #search-bar-wrap {
         display: flex;
-        gap: 0.5rem;
+        justify-content: space-between;
+        background-color: white;
+        border-radius: 2rem;
+        padding: 0.5rem 0.5rem 0.5rem clamp(0.75rem, 4vw, 2rem);
+        width: clamp(200px, 80vw, 500px);
     }
 
     #search-bar {
-        padding: 0.35rem 0.5rem;
+        display: flex;
+        flex: 1 1 auto;
+        min-width: 8ch;
         line-height: 0.8;
-        border-radius: .25rem;
-        border: 1px solid grey;
+        border: none;
+        padding: 0;
+        font-size: clamp(0.875rem, 2vw, 1.125rem);
     }
+
+    #search-bar:focus-visible {
+        outline: none;
+    }
+
+    #search-submit {
+        background-color: #7abeea;
+        border: none;
+        border-radius: 1rem;
+        padding: 0.25rem 1rem;
+        font-size: clamp(0.875rem, 2vw, 1.125rem);
+        font-weight: 500;
+        color: white;
+    }
+
 
     .suggestion-list {
         display: flex;
