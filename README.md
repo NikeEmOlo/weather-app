@@ -1,6 +1,7 @@
 # Weather Or Not
 
 Completed as part of [The Odin Project](https://theodinproject.org) full stack development course.
+[Live Preview](https://nikeemolo.github.io/weather-app/)
 
 ## About
 
