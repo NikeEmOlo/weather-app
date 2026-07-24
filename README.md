@@ -2,6 +2,7 @@
 
 Completed as part of [The Odin Project](https://theodinproject.org) full stack development course.
 [Live Preview](https://nikeemolo.github.io/weather-app/)
+> **Note:** The `.env` file for this project has been committed to version control. Both APIs used are free tiers with no billing risk, so this was an acceptable trade-off for convenience. I understand that in a production project, keys and secrets should always be managed through a secure store.
 
 ## About
 
@@ -32,7 +33,6 @@ This project was built to practice:
    GEOAPIFY_API_KEY=your_key_here
    VISUAL_CROSSING_API_KEY=your_key_here
    ```
-   > **Note:** The `.env` file for this project has been committed to version control. Both APIs used are free tiers with no billing risk, so this was an acceptable trade-off for convenience. I understand that in a production project, keys and secrets should always be managed through a secure store.
 4. Start the development server:
    ```
    npm start
